@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "btdetal-prices"
+version = "0.1.0"
+description = "Импорт прайсов БТДеталь и быстрый локальный поиск цен"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["openpyxl>=3.1,<4", "xlrd>=2.0.1,<3"]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.12,<1", "basedpyright>=1.28,<2", "pytest>=8,<10", "xlwt>=1.3,<2", "build>=1,<2"]
+
+[project.scripts]
+btdetal-prices = "btdetal.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/btdetal"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/tests", "/examples", "/docs", "/.zed", "/README.md", "/pyproject.toml", "/.gitignore"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+extend-exclude = ["temp", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
+reportUnusedCallResult = "warning"
+include = ["src", "tests", "examples"]
+extraPaths = ["src"]
+venvPath = "."
+venv = ".venv"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

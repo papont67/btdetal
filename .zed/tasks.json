@@ -1,0 +1,6 @@
+[
+  {"label": "БТДеталь: тесты", "command": ".venv/Scripts/python.exe -m pytest -q"},
+  {"label": "БТДеталь: Ruff", "command": ".venv/Scripts/python.exe -m ruff check ."},
+  {"label": "БТДеталь: типы", "command": ".venv/Scripts/basedpyright.exe"},
+  {"label": "БТДеталь: сведения о прайсе", "command": ".venv/Scripts/python.exe -X utf8 -m btdetal --db data/btdetal.sqlite3 info"}
+]

@@ -1,0 +1,12 @@
+.venv/
+temp/
+dist/
+build/
+__pycache__/
+.pytest_cache/
+pytest-cache-files-*/
+.ruff_cache/
+*.egg-info/
+*.sqlite3*
+*.xlsx
+*.xls
