@@ -6,10 +6,10 @@ from typing import BinaryIO
 from btdetal import BtdetalParser
 
 
-def import_uploaded_file(file: BinaryIO, db_path: Path, price_date: str) -> dict:
+def import_uploaded_file(file: BinaryIO, db_path: Path) -> dict:
     """Обработать бинарный поток из обработчика загрузки сайта."""
     parser = BtdetalParser(db_path)
-    return parser.import_price(file, price_date=price_date)
+    return parser.import_price(file)
 
 
 def find_prices(db_path: Path, article: str) -> dict:

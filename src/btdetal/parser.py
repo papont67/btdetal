@@ -7,7 +7,7 @@ import json
 import sqlite3
 from collections.abc import Iterable
 from contextlib import closing
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
 from typing import Any, BinaryIO
@@ -66,12 +66,11 @@ class BtdetalParser:
     ) -> dict[str, Any]:
         """Принять путь, bytes или бинарный поток и целиком заменить текущий прайс.
 
-        price_date задаётся в ISO-формате YYYY-MM-DD. Пустой прайс по умолчанию
+        price_date — необязательная строка, сохраняемая без проверки даты или формата.
+        Пустой прайс по умолчанию
         отклоняется. Поток читается с текущей позиции и не закрывается библиотекой.
         Ошибка чтения, проверки или записи сохраняет предыдущую версию базы.
         """
-        if price_date is not None:
-            price_date = date.fromisoformat(price_date).isoformat()
         source_name = None
         if isinstance(source, (str, Path)):
             source_name = Path(source).name

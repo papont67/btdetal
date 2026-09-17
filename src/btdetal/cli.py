@@ -15,7 +15,7 @@ def main() -> int:
     importer = commands.add_parser("import", help="Заменить прайс из XLS/XLSX")
     _ = importer.add_argument("file")
     _ = importer.add_argument("--sheet-name")
-    _ = importer.add_argument("--price-date", help="Дата прайса YYYY-MM-DD")
+    _ = importer.add_argument("--price-date", help="Необязательная дата прайса, без проверки")
     _ = importer.add_argument("--allow-empty", action="store_true")
     search = commands.add_parser("search", help="Поиск по артикулу и наименованию")
     _ = search.add_argument("queries", nargs="+")
